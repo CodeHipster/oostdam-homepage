@@ -1,0 +1,11 @@
+.kiteboarding {
+    flex: 1;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('./DSC04697.JPG');
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+}
