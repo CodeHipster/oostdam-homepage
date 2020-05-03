@@ -15,10 +15,6 @@
 runtime: go112 # replace with go111 for Go 1.11
 
 handlers:
-- url: /favicon\.ico
-  static_files: public/static/icon.png
-  upload: public/static/icon.png
-
 - url: /static
   static_dir: public/static
 
