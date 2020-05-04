@@ -1,0 +1,20 @@
+.navigation-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 200%;
+    white-space: nowrap;
+    padding: 1rem;
+    background-color: #000000;
+    color: #838383;
+    cursor: pointer;
+}
+
+.navigation-item.selected {
+    color: #f3f3f3;
+}
+
+.navigation-item:hover {
+    background: #1b1b1b;
+}
