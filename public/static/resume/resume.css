@@ -3,7 +3,8 @@
     justify-content: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #434343;
-    background: url('background-left-bar.png');
+    background: url('getwallpapers-polygon.jpg');
+    background-size: cover;
 }
 
 .content {
