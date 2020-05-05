@@ -3,11 +3,12 @@
  * Call this in the beforeCreate function of the vue component.
  * @param {*} fileName: path to the css file from the root of the app. e.g. static/oostdam.css
  */
-export default function(fileName) {
+export default function(fileName, media = 'all') {
     var head = document.getElementsByTagName('head')[0];
     var style = document.createElement('link');
     style.href = fileName;
     style.type = 'text/css';
     style.rel = 'stylesheet';
+    style.media = media;
     head.append(style);
   }

@@ -9,6 +9,7 @@
     background-color: #000000;
     color: #838383;
     cursor: pointer;
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
 .navigation-item.selected {

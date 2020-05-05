@@ -5,6 +5,9 @@ export default {
     beforeCreate: function () {
         addCss('static/navigation/navigation.css');
     },
+    created: function () {
+        this.$emit('navigate', this.activeItem);
+    },
     data: function () {
         return {
             items: [
@@ -21,6 +24,7 @@ export default {
     methods:{
         navigate: function(item){
             this.activeItem = item;
+            this.$emit('navigate', this.activeItem);
         }  
     },
     template: `
