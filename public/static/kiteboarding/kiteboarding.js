@@ -6,11 +6,5 @@ export default {
     },
     template: `
     <div class=kiteboarding>
-        <div class=button-left>
-            <img src='static/kiteboarding/arrow-left.svg'>
-        </div>
-        <div class=button-right>
-            <img src='static/kiteboarding/arrow-right.svg'>
-        </div>
     </div>`
 }
