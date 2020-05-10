@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+//NOTE: drop positions can only be whole integers.
+
+var widthWindowPx = 400;
+var heightWindowPx = 400;
+
+var widthPx = 400;
+var heightPx = 400;
+
+var scaleWidth = widthWindowPx/widthPx;
+var scaleHeight = heightWindowPx/heightPx;
+
+var gravity = -100;
+
+//create canvas
+var canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+canvas.id     = "pond";
+canvas.width  = widthWindowPx;
+canvas.height = heightWindowPx;
+canvas.style.border = "1px solid";
+
+canvas.addEventListener('click', function placeDrop(event) {
+    //Drops are on cartesian coordinates, window coordinates have inverted Y.
+    var x = event.offsetX;
+    var y = heightWindowPx-event.offsetY;
+    //Scale scale clicked window pixel back to pond/context pixel.
+    x /= scaleWidth;
+    y /= scaleHeight;
+    //Floor position to whole integer.
+    x = Math.floor(x);
+    y = Math.floor(y);
+    //Check if position is free.
+    if(collisionGrid[x][y] == null){
+        //create new drop.
+        var drop = new Drop(x,y);
+        drop.velocityX = 0;
+        drop.velocityY = - (initialVelocityTextArea.valueAsNumber || 0);
+        drop.test = true;
+        //add to array
+        drops.push(drop);
+        //add to collisionGrid    
+        collisionGrid[drop.x][drop.y] = drop;
+    }    
+}, false);
+
+//create initial velocity input box. 
+document.body.appendChild(document.createElement("br"));
+var label = document.createElement("label");
+label.innerHTML = "Powah! Use with caution."
+document.body.appendChild(label);
+document.body.appendChild(document.createElement("br"));
+var initialVelocityTextArea = document.createElement("input");
+initialVelocityTextArea.setAttribute("type", "number");
+initialVelocityTextArea.value = 10000;
+document.body.appendChild(initialVelocityTextArea);
+
+
+var ctx = canvas.getContext("2d");
+ctx.scale(scaleWidth,scaleHeight);
+ctx.fillStyle="#0000FF"; //blue
+
+//Array containing all drops.
+var drops = new Array();
+
+//2d array to maintain collisions of drops.
+var collisionGrid = [];
+for(x = 0 ;x < widthPx ;x++){
+    collisionGrid[x] = []
+    for(y=0;y<heightPx;y++){
+        collisionGrid[x][y] = null;
+        //Add border of statics.
+        if(y==0 || x==0 || x == widthPx-1 || y == heightPx-1 ){
+            staticDrop = new Drop(x,y);
+            staticDrop.static = true;
+            collisionGrid[x][y] = staticDrop;
+            drops.push(staticDrop);
+        }else{
+            if(y < 20){ //prefil with drops
+                var drop = new Drop(x,y);
+                collisionGrid[x][y] = drop;
+                drops.push(drop);
+            }
+        }
+    }
+}
+
+function Drop(x,y) {
+    this.x = x;
+    this.y = y;
+    this.velocityX = 0;
+    this.velocityY = 0;        
+}
+Drop.prototype.accelerationY = gravity;
+
+function drawDrops(){
+    ctx.clearRect(0, 0, widthPx, heightPx);
+    drops.forEach(function(drop){
+        //ctx.fillStyle="#0000FF"; //blue
+        ctx.fillRect( drop.x, (heightPx-drop.y-1), 1, 1 );
+        // if(!drop.static){
+        //     //draw arrows for debugging.
+        //     if(drop.velocityX != 0){
+        //         drawArrow(drop.x + 0.5, (heightPx-drop.y-1) + 0.5, drop.x+drop.velocityX/scaleWidth + 0.5, (heightPx-drop.y-1) + 0.5, "#ff0000", ctx);
+        //     }
+        //     if(drop.velocityY != 0){
+        //         drawArrow(drop.x + 0.5, (heightPx-drop.y-1) + 0.5, drop.x + 0.5, (heightPx-drop.y-1)-drop.velocityY/scaleHeight + 0.5, "#00ff00", ctx);
+        //     }    
+        // }
+    });
+};
+
+function dropFysics(seconds){
+    
+    drops.forEach(function(drop){
+        //if static, we do not do physics.
+        if(drop.static) return;
+        
+        //remove itself from position array
+        collisionGrid[drop.x][drop.y] = null;
+        
+        //add gravity
+        drop.velocityY += gravity*seconds;
+
+        //resolve kinetic energy (move drop / transfer velocity)
+        resolveKineticEnergy(drop, seconds);
+
+        //Add itself to position array
+        collisionGrid[drop.x][drop.y] = drop;
+    });    
+};
+
+//TODO:double check
+function transferKineticEnergy(drop){
+    var left = collisionGrid[drop.x-1][drop.y];
+    var right = collisionGrid[drop.x+1][drop.y];
+    var bottom = collisionGrid[drop.x][drop.y-1];
+    var top = collisionGrid[drop.x][drop.y+1];
+    if(!right instanceof Drop){right = null;}
+    if(!left instanceof Drop){left = null;}
+    if(!top instanceof Drop){top = null;}
+    if(!bottom instanceof Drop){bottom = null;}
+    //values of drop's own velocity.
+    var dropVelocityX = 0;
+    var dropVelocityY = 0;
+    
+    //X direction
+    if(drop.velocityX){        
+        if(drop.velocityX > 0){ //velocity directed right.
+            if(right){
+                if(right.static){
+                    //hitting a static all force goes up and down.  
+                    if(top){
+                        top.velocityY += 0.5 * drop.velocityX;
+                    }else{
+                        dropVelocityY += 0.5 * drop.velocityX;
+                    }               
+                    if(bottom){
+                        bottom.velocityY -= 0.5 * drop.velocityX;
+                    }else{
+                        dropVelocityY -= 0.5 * drop.velocityX;
+                    }
+                }else{ //transfer force.                    
+                    if(top && bottom){
+                        right.velocityX += 0.50 * drop.velocityX; //transfer a part.
+                        top.velocityY += 0.25 * drop.velocityX; //part of force goes up.
+                        bottom.velocityY -= 0.25 * drop.velocityX; //part of force goes down.
+                    }else if(top || bottom){
+                        right.velocityX += 0.50 * drop.velocityX; //transfer a part.
+                        if(top){
+                            top.velocityY += 0.25 * drop.velocityX; //part of force goes up.
+                            dropVelocityY -= 0.25 * drop.velocityX; //part goes into itself down.
+                        }else{
+                            dropVelocityY += 0.25 * drop.velocityX; //part goes into itself up.                   
+                            bottom.velocityY -= 0.25 * drop.velocityX; //part of force goes down.     
+                        }
+                    }else{ //no top or bottom.
+                        right.velocityX += drop.velocityX; //transfer part right.     
+                    }
+                }
+            }else{ //nothing directly in the way.
+                dropVelocityX += drop.velocityX; //just continue                
+            }
+        }else{ //velocity directed left.
+            if(left){
+                if(left.static){
+                    //hitting a static all force goes up and down.  
+                    if(top){
+                        top.velocityY -= 0.5 * drop.velocityX;
+                    }else{
+                        dropVelocityY -= 0.5 * drop.velocityX;
+                    }               
+                    if(bottom){
+                        bottom.velocityY += 0.5 * drop.velocityX;
+                    }else{
+                        dropVelocityY += 0.5 * drop.velocityX;
+                    }
+                }else{//transfer force                                 
+                    if(top && bottom){    
+                        left.velocityX += 0.50 * drop.velocityX; //transfer a part.
+                        top.velocityY -= 0.25 * drop.velocityX; //part of force goes up.
+                        bottom.velocityY += 0.25 * drop.velocityX; //part of force goes down.
+                    }else if(top || bottom){
+                        left.velocityX += 0.50 * drop.velocityX; //transfer a part.
+                        if(top){
+                            top.velocityY -= 0.25 * drop.velocityX; //part of force goes up.
+                            dropVelocityY += 0.25 * drop.velocityX; //part goes into itself down.
+                        }else{
+                            bottom.velocityY += 0.25 * drop.velocityX; //part of force goes down.     
+                            dropVelocityY -= 0.25 * drop.velocityX; //part goes into itself up.                   
+                        }
+                    }else{ //no top or bottom.
+                        left.velocityX += drop.velocityX; //transfer part.                           
+                    }
+                }
+            }else{ //nothing directly in the way.
+                dropVelocityX += drop.velocityX; //just continue                
+            }
+        }
+    }
+    
+    //Y direction
+    if(drop.velocityY){            
+        if(drop.velocityY > 0){ //velocity directed up.
+            if(top){
+                if(top.static){
+                    //hitting a static all force goes left and right.  
+                    if(left){
+                        left.velocityX -= 0.5 * drop.velocityY;
+                    }else{
+                        dropVelocityX -= 0.5 * drop.velocityY;
+                    }               
+                    if(right){
+                        right.velocityX += 0.5 * drop.velocityY;
+                    }else{
+                        dropVelocityX += 0.5 * drop.velocityY;
+                    }
+                }else{//transfer force                 
+                    if(left && right){    
+                        top.velocityY += 0.50 * drop.velocityY; //transfer a part.
+                        left.velocityX -= 0.25 * drop.velocityY; //part of force goes left.
+                        right.velocityX += 0.25 * drop.velocityY; //part of force goes right.
+                    }else if(left || right){
+                        top.velocityY += 0.50 * drop.velocityY; //transfer a part.
+                        if(left){
+                            left.velocityX -= 0.25 * drop.velocityY; //part of force goes left.
+                            dropVelocityX += 0.25 * drop.velocityY; //part goes into itself right.
+                        }else{
+                            dropVelocityX -= 0.25 * drop.velocityY; //part goes into itself left.                   
+                            right.velocityX += 0.25 * drop.velocityY; //part of force goes right.     
+                        }
+                    }else{ //no left or right.
+                        top.velocityY += drop.velocityY; //transfer part.
+                    }
+                }
+            }else{ //nothing directly in the way.
+                dropVelocityY += drop.velocityY; //just continue                
+            }
+        }else{ //velocity directed down.
+            if(bottom){
+                if(bottom.static){
+                    //hitting a static all force goes left and right.  
+                    //force is lost if side is a static.
+                    if(left){
+                        left.velocityX += 0.5 * drop.velocityY;
+                    }else{
+                        dropVelocityX += 0.5 * drop.velocityY;
+                    }               
+                    if(right){
+                        right.velocityX -= 0.5 * drop.velocityY;
+                    }else{
+                        dropVelocityX -= 0.5 * drop.velocityY;
+                    }
+                }else{//transfer force to surrounding drops.
+                    if(left && right){  
+                        bottom.velocityY += 0.50 * drop.velocityY; //transfer a part.
+                        left.velocityX += 0.25 * drop.velocityY; //part of force goes left.
+                        right.velocityX -= 0.25 * drop.velocityY; //part of force goes right.
+                    }else if(left || right){
+                        bottom.velocityY += 0.50 * drop.velocityY; //transfer a part.
+                        if(left){
+                            left.velocityX += 0.25 * drop.velocityY; //part of force goes left.
+                            dropVelocityX -= 0.25 * drop.velocityY; //part goes into itself right.
+                        }else{
+                            right.velocityX -= 0.25 * drop.velocityY; //part of force goes right.     
+                            dropVelocityX += 0.25 * drop.velocityY; //part goes into itself left.                   
+                        }
+                    }else{ //no left or right.
+                        bottom.velocityY += drop.velocityY; //transfer part.                   
+                    }
+                }
+            }else{ //nothing directly in the way.
+                dropVelocityY += drop.velocityY; //just continue                
+            }
+        }
+    } 
+    
+    //set new drop velocity;
+    drop.velocityX = dropVelocityX;
+    drop.velocityY = dropVelocityY;
+}
+
+//move the drop and transfer energy on impact.
+function resolveKineticEnergy(drop, seconds){
+    //get distance to move.
+    var dx = Math.round(drop.velocityX * seconds);
+    var dy = Math.round(drop.velocityY * seconds);
+    
+    //do not move if there is no distance to move.
+    if(dx == 0 && dy == 0) return;
+    
+    var xDirection = (dx > 0)? 1 : -1;
+    var yDirection = (dy > 0)? 1 : -1;
+    var dxAbs = Math.abs(dx);
+    var dyAbs = Math.abs(dy);
+    
+    //set either x or y to be a step.
+    //a step is a movement on the collisionGrid(full integers).
+    //a move is movement(or future movement) on the cartesian plane of the drop.
+    //steps and moves are positive and corrected by direction when no longer in the context of a step.
+    var stepOverX = dxAbs > dyAbs;
+    if(stepOverX){
+        var xMove = 1;
+        var yMove = dyAbs/dxAbs //y step for each 1x
+    }else{   
+        //step over y
+        var yMove = 1;
+        var xMove = dxAbs/dyAbs //x Step for each 1y
+    }
+    
+    //step
+    //We do not step diagonally(thats why totalsteps is x + y)
+    var totalSteps = Math.round(dxAbs) + Math.round(dyAbs);
+    var steps = 0;
+    var x = drop.x;
+    var y = drop.y;
+    var prevX, prevY;
+    var xStepSignal = 0;
+    var yStepSignal = 0;
+    while(steps < totalSteps){
+        xStepSignal += xMove;
+        yStepSignal += yMove;
+        prevX = x;
+        prevY = y;
+        
+        //prejudice for x direction... as it is evaluated first.
+        if(xStepSignal >= 1){ //do an x step
+            x += 1 * xDirection;
+            xStepSignal -= 1;
+            if(collisionGrid[Math.round(x)][Math.round(y)] != null){
+                //Set drop position to previous non collision location.
+                drop.x = Math.round(prevX);
+                drop.y = Math.round(prevY);
+                //transfer energy.
+                transferKineticEnergy(drop);
+                //continue resolving (new) kinetic energy
+                seconds *= (totalSteps - steps)/totalSteps;
+                resolveKineticEnergy(drop, seconds);
+                return;
+            }    
+            steps += 1;
+        }
+        
+        if(yStepSignal >= 1){ //do an y step
+            y += 1 * yDirection;            
+            yStepSignal -= 1;
+            if(collisionGrid[Math.round(x)][Math.round(y)] != null){
+                //Set drop position to previous non collision location.
+                drop.x = Math.round(prevX);
+                drop.y = Math.round(prevY);
+                //transfer energy.
+                transferKineticEnergy(drop);
+                //continue resolving (new) kinetic energy
+                seconds *= (totalSteps - steps)/totalSteps;
+                resolveKineticEnergy(drop, seconds);
+                return;
+            }    
+            steps += 1;
+        }
+    }
+    
+    //No more steps to take, set drop position.
+    drop.x = x;
+    drop.y = y;        
+}
+
+var Game = { };
+Game.logicPerSecond = 10;
+Game.logicTimeSec = 1/Game.logicPerSecond; 
+Game.draw = function() { 
+    drawDrops();
+};
+Game.update = function(frameTime) {    
+    dropFysics(frameTime);
+};
+var time;
+Game.run = function() {
+    time = window.performance.now();
+    Game.update(Game.logicTimeSec);
+    Game.draw();
+    console.log("frametime: ", window.performance.now() - time);
+};
+
+// Start the game loop
+Game._intervalId = setInterval(Game.run, Game.logicTimeSec * 1000);
+
+function drawArrow(fromx, fromy, tox, toy, color, ctx){
+    var headlen = 0.5;
+
+    var angle = Math.atan2(toy-fromy,tox-fromx);
+
+    //starting path of the arrow from the start square to the end square and drawing the stroke
+    ctx.beginPath();
+    ctx.moveTo(fromx, fromy);
+    ctx.lineTo(tox, toy);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 0.1;
+    ctx.stroke();
+
+    //starting a new path from the head of the arrow to one of the sides of the point
+    ctx.beginPath();
+    ctx.moveTo(tox, toy);
+    ctx.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),toy-headlen*Math.sin(angle-Math.PI/7));
+
+    //path from the side point of the arrow, to the other side point
+    ctx.lineTo(tox-headlen*Math.cos(angle+Math.PI/7),toy-headlen*Math.sin(angle+Math.PI/7));
+
+    //path from the side point back to the tip of the arrow, and then again to the opposite side point
+    ctx.lineTo(tox, toy);
+    ctx.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),toy-headlen*Math.sin(angle-Math.PI/7));
+
+    //draws the paths created above
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 0.1;
+    ctx.stroke();
+    ctx.fillStyle = color;
+    ctx.fill();
+}
+
+</script>
+
+</body>
+</html>

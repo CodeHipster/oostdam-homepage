@@ -39,45 +39,33 @@ export default {
             company: 'ING',
             role: 'Java Developer',
             responsibilities: 'Ensure the static reference data team reaches their QBR targets by implementing a cached API and building a generic interface for receiving static data.',
-            references: [{
-                name: 'Ana Popescu',
-                email: 'ana.popescu@ing.com'
-            }]
         },
         {
             period: { from: 'Dec. 2017', to: 'Dec. 2019' },
             company: 'Rabobank',
             role: 'Devops Engineer',
             responsibilities: 'Develop maintain and design an application, in a scrum team of 7, which gives the customer insight into their running bank processes. This application was the first to go live on the cloud (Pivotal) and was set up with continuous delivery without downtime.',
-            references: [{
-                name: 'Mark van Elk',
-                email: 'mark.van.elk@rabobank.nl'
-            }]
         },
         {
             period: { from: 'May 2016', to: 'Nov. 2017' },
             company: 'EBPI',
             role: 'Java Developer',
             responsibilities: 'Develop and maintain, in a scrum team of 5, the platform used to send millions of messages between businesses and the government. As well as implementing the backend services for the governments "BerichtenBox".',
-            references: [{
-                name: 'Ralph Verhelst',
-                email: 'ralph.verhelst@visma.com'
-            }]
         },
         {
             period: { from: 'Oct. 2014', to: 'Apr. 2016' },
             company: 'SnappCar',
             role: 'C# Developer',
             responsibilities: 'Building and maintaining every aspect of the Snappcar website in a scrum team of 4 including a migration from a local machine to the Amazon cloud.',
-            references: [{
-                name: 'Victor van Tol',
-                email: 'Victor@snappcar.nl'
-            }]
         }
     ],
     skills: {
         hard: [
             { name: 'Java', level: 100 },
+            { name: 'Dart', level: 30 },
+            { name: 'Flutter', level: 40 },
+            { name: 'Truffle suite', level: 30 },
+            { name: 'Blockchain', level: 50 },
             { name: 'Spring Boot', level: 100 },
             { name: 'Maven', level: 80 },
             { name: 'Sonar', level: 80 },

@@ -1,0 +1,17 @@
+.software {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #434343;
+    background: #1b1b1b;
+}
+
+.software .content {
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    flex-wrap: wrap;
+    max-width: 80rem;
+}

@@ -11,13 +11,6 @@ export default Vue.component('job-item', {
                 </div>
                 <div>{{job.responsibilities}}</div>
             </div>
-            <div class='references'>
-                <h4 class>Reference:</h4>
-                <div v-for="reference in job.references">    
-                    <div>{{reference.name}}</div>
-                    <div>{{reference.email}}</div>
-                </div>
-            </div>
         </div>
     </div>`,
 
