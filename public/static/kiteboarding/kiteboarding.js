@@ -5,17 +5,21 @@ export default {
     beforeCreate: function () {
         addCss('static/kiteboarding/kiteboarding.css');
     },
-    created: function () {
-        fetch('static/kiteboarding/media/')
-            .then(response => response.text())
-            .then(text => {
-                var images = this.parseMedia("static/kiteboarding/media/", text);
-                this.imageRotator.setImages(images);
-            });
+    mounted: function () {
+        this.imageRotator.setImages(this.media);
     },
     data: function () {
         return {
-            imageRotator: new ImageRotator(this.setBackground)
+            imageRotator: new ImageRotator(this.setBackground),
+            media: [
+                "static/kiteboarding/media/DSC04484.JPG",
+                "static/kiteboarding/media/DSC04540.JPG",
+                "static/kiteboarding/media/DSC04583.JPG",
+                "static/kiteboarding/media/DSC04671.JPG",
+                "static/kiteboarding/media/DSC04681.JPG",
+                "static/kiteboarding/media/DSC04697.JPG",
+                "static/kiteboarding/media/DSC04760.JPG",
+            ]
         }
     },
     methods: {
