@@ -1,42 +1,45 @@
 import addCss from '../add-css.js'
-import ItemRotator from '../item-rotator.js'
+import ImageRotator from './image-rotator.js'
 
 export default {
     beforeCreate: function () {
         addCss('static/kiteboarding/kiteboarding.css');
     },
-    created: function(){
-            this.preload(this.itemRotator.peekNext);
-            this.preload(this.itemRotator.peekPrevious);
+    created: function () {
+        fetch('static/kiteboarding/media/')
+            .then(response => response.text())
+            .then(text => {
+                var images = this.parseMedia("static/kiteboarding/media/", text);
+                this.imageRotator.setImages(images);
+            });
     },
     data: function () {
         return {
-            itemRotator: new ItemRotator([
-                '/static/kiteboarding/media/DSC04484.JPG',
-                '/static/kiteboarding/media/DSC04540.JPG',
-                '/static/kiteboarding/media/DSC04583.JPG',
-                '/static/kiteboarding/media/DSC04671.JPG',
-                '/static/kiteboarding/media/DSC04681.JPG',
-                '/static/kiteboarding/media/DSC04760.JPG',
-                '/static/kiteboarding/media/DSC04697.JPG',
-            ])
+            imageRotator: new ImageRotator(this.setBackground)
         }
     },
     methods: {
         next: function () {
-            this.setBackground(this.itemRotator.next());
-            console.log("preload next: " + this.itemRotator.peekNext());
-            this.preload(this.itemRotator.peekNext())
+            this.imageRotator.next();
         },
         previous: function () {
-            this.setBackground(this.itemRotator.previous());
-            this.preload(this.itemRotator.peekPrevious())
+            this.imageRotator.previous();
         },
         setBackground: function (image) {
             this.$el.style.backgroundImage = `url(${image})`;
         },
-        preload: function (image) {
-            new Image().src = image;
+        parseMedia: function (prefix, html) {
+            var el = document.createElement('html');
+            el.innerHTML = html;
+
+            var media = [];
+            var hrefs = el.getElementsByTagName('a');
+            var i;
+            for (i = 0; i < hrefs.length; i++) {
+                media.push(prefix + hrefs[i].getAttribute("href"));
+            }
+
+            return media;
         }
     },
     template: `
