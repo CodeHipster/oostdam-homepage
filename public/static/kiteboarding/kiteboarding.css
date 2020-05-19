@@ -10,7 +10,22 @@
     align-items: flex-end;
 }
 
+.kiteboarding .arrow {
+    cursor: pointer;
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+
 .kiteboarding .arrow img {
     width: 10rem;
     height: 10rem;
+    opacity: 0.5;
+}
+
+.kiteboarding .arrow img:hover {
+    opacity: 1;
+}
+
+.kiteboarding .arrow img:active {
+    opacity: 1;
+    transform: scale(0.90);
 }
