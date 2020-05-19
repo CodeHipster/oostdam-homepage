@@ -4,9 +4,13 @@ export default class {
 
     loopList;
     applyImage;
+    timer;
+    interval = 8000;
 
     constructor(applyImage) {
         this.applyImage = applyImage;
+        this.timer = setTimeout(function () { this.next(); }.bind(this), this.interval);
+        console.log(this.timer);
     }
 
     setImages(images) {
@@ -18,15 +22,21 @@ export default class {
 
     next() {
         if (this.loopList) {
-            this.applyImage(this.loopList.next());
+            var media = this.loopList.next();
+            this.applyImage(media);
             this.preload(this.loopList.peekNext())
+
+            this.setTimer(()=> this.next(), this.getInterval(media));
         }
     }
 
     previous() {
         if (this.loopList) {
-            this.applyImage(this.loopList.previous());
+            var media = this.loopList.previous();
+            this.applyImage(media);
             this.preload(this.loopList.peekPrevious());
+            
+            this.setTimer(()=> this.previous(), this.getInterval(media));
         }
     }
 
@@ -34,5 +44,18 @@ export default class {
         new Image().src = image;
     }
 
+    destroy() {
+        clearInterval(this.timer);
+    }
+
+    getInterval(image) {
+        if (image.endsWith(".webp")) return 2 * this.interval; //Animations have twice the default interval.
+        else return this.interval;
+    }
+
+    setTimer(method, interval){
+        clearInterval(this.timer);
+        this.timer = setTimeout(method, interval);
+    }
 
 }

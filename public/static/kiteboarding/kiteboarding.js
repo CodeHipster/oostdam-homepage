@@ -8,14 +8,20 @@ export default {
     mounted: function () {
         this.imageRotator.setImages(this.media);
     },
+    destroyed: function(){
+        console.log("destroyed kiteboarding");
+        this.imageRotator.destroy();
+    },
     data: function () {
         return {
             imageRotator: new ImageRotator(this.setBackground),
             media: [
                 "static/kiteboarding/media/DSC04484.JPG",
+                "static/kiteboarding/media/360-transition.webp",
                 "static/kiteboarding/media/DSC04540.JPG",
                 "static/kiteboarding/media/DSC04583.JPG",
                 "static/kiteboarding/media/DSC04671.JPG",
+                "static/kiteboarding/media/inverted-frontroll.webp",
                 "static/kiteboarding/media/DSC04681.JPG",
                 "static/kiteboarding/media/DSC04697.JPG",
                 "static/kiteboarding/media/DSC04760.JPG",
@@ -31,19 +37,6 @@ export default {
         },
         setBackground: function (image) {
             this.$el.style.backgroundImage = `url(${image})`;
-        },
-        parseMedia: function (prefix, html) {
-            var el = document.createElement('html');
-            el.innerHTML = html;
-
-            var media = [];
-            var hrefs = el.getElementsByTagName('a');
-            var i;
-            for (i = 0; i < hrefs.length; i++) {
-                media.push(prefix + hrefs[i].getAttribute("href"));
-            }
-
-            return media;
         }
     },
     template: `

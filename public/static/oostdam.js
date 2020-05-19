@@ -28,8 +28,8 @@ new Vue({
     template: `
     <div class=root>
         <navigation @navigate="navigate"></navigation>
-        <kiteboarding v-if="activeItem == 'my kiteboarding'"></kiteboarding>
-        <software v-if="activeItem == 'my software'"></software>
-        <resume v-if="activeItem == 'my resume'"></resume>
+        <kiteboarding v-show="activeItem == 'my kiteboarding'"></kiteboarding>
+        <software v-show="activeItem == 'my software'"></software>
+        <resume v-show="activeItem == 'my resume'"></resume>
     </div>`
 })
