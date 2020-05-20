@@ -10,7 +10,6 @@ export default class {
     constructor(applyImage) {
         this.applyImage = applyImage;
         this.timer = setTimeout(function () { this.next(); }.bind(this), this.interval);
-        console.log(this.timer);
     }
 
     setImages(images) {

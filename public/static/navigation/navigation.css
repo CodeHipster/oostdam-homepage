@@ -7,13 +7,12 @@
     border-bottom: 1px solid;
 }
 
-.navigation .box {
+.navigation .desk {
     flex: 1 1;
     max-width: 80rem;
     display: flex;
     justify-content: center;
 }
-
 
 .navigation .name {
     flex: 1;
@@ -26,4 +25,26 @@
     white-space: nowrap;
     padding: 1rem;
     cursor: default;
+}
+
+.navigation .menu {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+    cursor: pointer;
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+
+.navigation .menu img {
+    align-self: center;
+    width: 40px;
+    height: 40px;
+}
+
+.navigation .menu .items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }

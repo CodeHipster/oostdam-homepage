@@ -9,7 +9,6 @@ export default {
         this.imageRotator.setImages(this.media);
     },
     destroyed: function(){
-        console.log("destroyed kiteboarding");
         this.imageRotator.destroy();
     },
     data: function () {
