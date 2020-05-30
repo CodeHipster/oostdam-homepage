@@ -1,43 +1,71 @@
 .project-item {
-    flex: 1;
+    flex: 1 1 500px;
+    min-width: 300px;
+    max-width: 1000px;
     display: flex;
-    padding: 1rem;
+    padding: 4px;
     background: #1b1b1b;
 }
 
-.project-item .content{
+/* To keep the boxes square */
+.project-item:before {
+    content:'';
+    float:left;
+    padding-top:100%;
+}
+
+.project-item .content {
+    flex: 1;
+    display: flex;
+}
+
+.project-item .content img {
+    flex: 1;
+    width: 100%;
+}
+
+.project-item .content .info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    /* background: #1b1b1b; */
-    background: white;
-    cursor: pointer;
+    background-color: #f3f3f3;
+    padding: 12px;
 }
 
-.project-item .content:hover {
-    background: #1b1b1b;
-    color: #838383;
+.project-item .content .info .header {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
 }
 
-.project-item .title {
+.project-item .content .info .header img {
+    flex: 1;
+    width: 25%;
+    object-fit: cover;
+}
+
+/* todo: find a better name for the list. */
+
+.project-item .content .info .header .list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 8px;
+}
+
+.project-item .content .info .header .title {
     white-space: nowrap;
-    /* color: #838383; */
     font-size: 150%;
-    user-select: none;
+    padding-bottom: 4px;
 }
 
-.project-item .year {
-    align-self: flex-start;
-}
+.project-item .content .info .header .year {}
 
-.project-image {
-    flex: 1 1;
-    width: 15rem;
-    padding: 1rem;
-}
-
-.project-image img {
-    width: 100%;
+.project-item .content .info .description {
+    flex: 1;
+    display: flex;
+    padding-top: 8px;
+    text-align: justify;
+    text-justify: inter-word;
 }

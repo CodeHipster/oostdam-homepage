@@ -7,6 +7,8 @@ TODO:
 -----
 
 - use px instead of rem
-- restyle my software
-    - show only images / webp animations
-    - on hover (desk) click (mobile) -> show technical details
+- review CSS classes
+- make resume mobile friendly
+- my software:
+    - change descriptions a little
+    - make animations instead of images
