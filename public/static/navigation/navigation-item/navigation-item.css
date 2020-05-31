@@ -1,8 +1,4 @@
 .navigation-item {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
     font-size: 200%;
     white-space: nowrap;
     padding: 12px;
