@@ -9,6 +9,11 @@ export default {
         'focus',
         'project'
     ],
+    computed:{
+        techConcat: function(){
+            return this.project.tech.join(', ');
+        }
+    },
     methods: {
         // click: function () {
         //     window.open(this.project.url, '_blank');
@@ -41,15 +46,16 @@ export default {
             <img :src="project.image" :alt="project.title" v-if="focus != project.title">
             <div class=info v-if="focus == project.title">
                 <div class=header>
-                    <img :src="project.image" :alt="project.title">
                     <div class=list> 
                         <div class=title>{{project.title}}</div>
+                        <div v-if="project.link">Showcase: <a class=link target="_blank" :href="project.link">{{project.title}}</a></div>
                         <div>source: <a class=github target="_blank" :href="project.sourceCode">Github</a> </div>
-                        <a class=link target="_blank" :href="project.link">Live demo</a>
                         <div class=year>{{project.year}}</div>
                     </div>
+                    <img :src="project.image" :alt="project.title">
                 </div>
                 <div class=description>{{project.description}}</div>
+                <div class=tech><b>Technology used:</b> {{techConcat}}</div>
             </div>
         </div>
     </div>`

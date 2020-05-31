@@ -25,7 +25,7 @@ export default {
                         'Flexbox',
                         'Google App Engine',
                     ],
-                    description: "This website, made to showcase my hobbies(kiteboarding, software development) and my resume. It is running in the Google cloud using their App Engine serverless framework. Using VueJS and Flexbox to make it suitable for desktop and mobile devices.",
+                    description: "This website: made to showcase my hobbies(kiteboarding, software development) and my resume. It is running in the Google cloud using their App Engine serverless framework. And using VueJS with Flexbox to make it suitable for desktop and mobile devices.",
                     link: "/"
                 },
                 {
@@ -38,7 +38,7 @@ export default {
                         'Java Flow',
                         'Java Swing'
                     ],
-                    description: "A ray tracer made with only using Java (No dependencies on any other libraries). Using the Java 9 Modules to decouple the rendering from the viewing. Also using Java 9 Flow for reactive streams, this makes it possible to see the progress of the render by streaming the pixels that get traced. The ray tracer implements point lights, reflection and refraction.",
+                    description: "A ray tracer made with pure Java (No dependencies on any other libraries). Using the Java 9 Modules to decouple the rendering from the viewing. Also using Java 9 Flow for reactive streams, this makes it possible to see the progress of the render by streaming the pixels that get traced. The ray tracer implements point lights, reflection, and refraction.",
                 },
                 {
                     title: "Statics server",
@@ -48,7 +48,7 @@ export default {
                     tech: [
                         'Golang'
                     ],
-                    description: "A simple server made in Golang to serve static content (html, css, javascript, images etc.). Ideal for local development without having to install PHP or Node or CORS exceptions. Windows and unix binaries available. "
+                    description: "A simple server made in Golang to serve static content (Html, CSS, javascript, images, etc.). Ideal for local development without having to install PHP/Node or workaround CORS exceptions. \nWindows and Unix binaries available."
                 },
                 {
                     title: "Flutter clock",
@@ -60,7 +60,7 @@ export default {
                         'Flutter',
                         'WebP',
                     ],
-                    description: "A fantasy themed clock made in Flutter(from Google) with the Dart language. Artwork made by Kaj Fischer."
+                    description: "A fantasy-themed clock made in Flutter(from Google) with the Dart language. Artwork made by Kaj Fischer."
                 },
                 {
                     title: "Style transfer",
@@ -70,7 +70,7 @@ export default {
                         'Python',
                         'Tensorflow',
                     ],
-                    description: "Learning the style from an image in a neural network and then applying that style to a 360 degrees video. The video is best watched with an AR/VR headset. Artwork made by Kaj Fischer.",
+                    description: "Learning the style from an image in a neural network and then applying that style to a 360 degrees video. The video is best watched with an AR/VR headset. Artwork made by Kaj Fischer. Follow the showcase link to download the video.",
                     link: 'https://storage.googleapis.com/oostdam-website-static-content/lucy_360.mp4',
                 },
                 {
@@ -87,7 +87,7 @@ export default {
                         'SQL',
                         'REST',
                     ],
-                    description: "Carpooling application with a Java backend, data stored using SQL and a vuejs frontend using googlemaps api.",
+                    description: "Carpooling application with a Java backend, data stored using SQL, and a VueJS frontend using GoogleMaps API.",
                 },
                 {
                     title: "Tic Tac Toe",
@@ -101,7 +101,7 @@ export default {
                         'JavaScript',
                         'Html',
                     ],
-                    description: "A simple game, but made for the ethereum network using smart contracts. Cheating is not possible (unless you beat the network) and the whole world can observe the result.",
+                    description: "A simple game made for the Ethereum network using smart contracts. Cheating is not possible (unless you beat the network) and the whole world can observe the result.",
                 },
                 {
                     title: "Drops in the pond",
@@ -111,7 +111,7 @@ export default {
                     tech: [
                         'JavaScript',
                     ],
-                    description: "A fiddle made on a bored evening when the only thing available was a browser. It is a crude 2d water simulation. You can play with the simulation by following the link.",
+                    description: "A fiddle made on a boring evening when the only thing available was a browser. It is a crude 2d water simulation. Follow the showcase link to play with the simulation.",
                     link: 'static/software/drops/drops-in-pond.html',
                 },
                 {
@@ -122,7 +122,7 @@ export default {
                     tech: [
                         'JavaScript',
                     ],
-                    description: "A javascript application that renders a koch fractal. It uses streams to continously update the screen and keep the memory footprint at a minimum while still maintaining great performance. The number of lines drawn per frame is dynamic to keep a steady fps. Follow the link to see the app in action.",
+                    description: "A javascript application that renders a Koch fractal. It uses streams to continuously update the screen and keep the memory footprint at a minimum while still maintaining great performance. The number of lines drawn per frame is dynamic to keep a steady fps. Follow the showcase link to see the app in action.",
                     link: 'static/software/snowflake/snowflake.html',
                 },
                 {
@@ -133,7 +133,7 @@ export default {
                     tech: [
                         'JavaScript',
                     ],
-                    description: "A javascript implementation of the 'game of life' by John Conway. A binary grid with a few simple rules can create complex patterns. Follow the link to play the game.",
+                    description: "A javascript implementation of the 'game of life' by John Conway. A binary grid with a few simple rules can create complex patterns. Follow the showcase link to play the game.",
                     link: 'static/software/game-of-life/index.html',
                 },
             ],
