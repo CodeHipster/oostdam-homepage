@@ -48,7 +48,8 @@ export default {
                     tech: [
                         'Golang'
                     ],
-                    description: "A simple server made in Golang to serve static content (Html, CSS, javascript, images, etc.). Ideal for local development without having to install PHP/Node or workaround CORS exceptions. \nWindows and Unix binaries available."
+                    description: "A simple server made in Golang to serve static content (Html, CSS, javascript, images, etc.). Ideal for local development without having to install PHP/Node or workaround CORS exceptions. \nFollow the showcase link for Windows and Unix binaries.",
+                    link: 'https://github.com/CodeHipster/statics-server/tree/master/binaries'
                 },
                 {
                     title: "Flutter clock",

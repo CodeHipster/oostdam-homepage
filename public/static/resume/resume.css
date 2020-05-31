@@ -5,6 +5,7 @@
     color: #434343;
     background: url('getwallpapers-polygon.jpg');
     background-size: cover;
+    border-top: 1px solid;
 }
 
 .content {

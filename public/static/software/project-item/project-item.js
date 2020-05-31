@@ -15,9 +15,6 @@ export default {
         }
     },
     methods: {
-        // click: function () {
-        //     window.open(this.project.url, '_blank');
-        // }
         click: function(){
             if(deviceType != 'desk'){
                 console.log("click")
@@ -43,8 +40,8 @@ export default {
         @mouseover=mouseOver
         @mouseleave=mouseLeave>        
         <div class=content>
-            <img :src="project.image" :alt="project.title" v-if="focus != project.title">
-            <div class=info v-if="focus == project.title">
+            <img :src="project.image" :alt="project.title" v-show="focus != project.title">
+            <div class=info v-show="focus == project.title">
                 <div class=header>
                     <div class=list> 
                         <div class=title>{{project.title}}</div>
@@ -60,8 +57,3 @@ export default {
         </div>
     </div>`
 }
-
-{/* <img :src="project.image" :alt="project.title" v-if="focus != project.title">
-<div class=info v-if="focus == project.title"> */}
-
-// v-bind:class="{ transparent: show }"
