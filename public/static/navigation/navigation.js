@@ -17,7 +17,7 @@ export default {
                 'my software',
                 'my resume',
             ],
-            activeItem: 'my kiteboarding',
+            activeItem: 'my resume',
             deviceType: deviceType,
             showMenu: false, 
         }
