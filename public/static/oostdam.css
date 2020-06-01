@@ -12,27 +12,26 @@ body {
     height: 100%;
 }
 
-.container {
+.c {
     display: flex;
 }
 
 /* row is default direction */
-
-.container-column {
+.c-column {
     display: flex;
     flex-direction: column;
 }
 
-.item-grow {
-    flex-grow: 1
+.i-grow {
+    flex: 1
 }
 
-.container-center {
+.c-center {
     display: flex;
     justify-content: center;
 }
 
-.container-stretch {
+.c-stretch {
     display: flex;
     align-items: stretch;
 }

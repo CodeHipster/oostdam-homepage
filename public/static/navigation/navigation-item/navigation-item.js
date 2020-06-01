@@ -14,5 +14,5 @@ export default {
         }
     },
     template: `
-    <div class="navigation-item item-grow container-center" v-bind:class="{ selected: isActive }" @click="click">{{title}}</div>`
+    <div class="navigation-item i-grow c-center" v-bind:class="{ selected: isActive }" @click="click">{{title}}</div>`
 }

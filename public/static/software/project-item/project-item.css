@@ -2,7 +2,6 @@
     flex: 1 1 500px;
     min-width: 300px;
     max-width: 1000px;
-    display: flex;
     padding: 4px;
 }
 
@@ -13,43 +12,22 @@
     padding-top:100%;
 }
 
-.project-item .content {
-    flex: 1;
-    display: flex;
-}
-
 .project-item .content img {
-    flex: 1;
     width: 100%;
 }
 
 .project-item .content .info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
     background-color: #f3f3f3;
     padding: 12px;
 }
 
-.project-item .content .info .header {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-}
-
 .project-item .content .info .header img {
-    flex: 1;
     width: 25%;
     object-fit: cover;
 }
 
 /* todo: find a better name for the list. */
-
 .project-item .content .info .header .list {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     padding-left: 8px;
 }
 
@@ -59,12 +37,12 @@
     padding-bottom: 4px;
 }
 
-.project-item .content .info .header .year {}
-
 .project-item .content .info .description {
-    flex: 1;
-    display: flex;
     padding-top: 8px;
     text-align: justify;
     text-justify: inter-word;
+}
+
+.project-item .content .info .tech {
+    padding-top: 4px;
 }

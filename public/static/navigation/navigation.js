@@ -35,16 +35,16 @@ export default {
         }
     },
     template: `
-    <div class="navigation container-center">
-        <div class="menu item-grow container-column container-stretch" v-if="deviceType != 'desk'" @click="toggleMenu">
-            <div class=container-center><img src='static/navigation/menu.svg'></div>
-            <div class="items item-grow container-stretch" v-if="showMenu">
-                <div class="name item-grow container-center">Thijs Oostdam</div>
+    <div class="navigation c-center">
+        <div class="menu i-grow c-column c-stretch" v-if="deviceType != 'desk'" @click="toggleMenu">
+            <div class=c-center><img src='static/navigation/menu.svg'></div>
+            <div class="items i-grow c-stretch c-column" v-if="showMenu">
+                <div class="name i-grow c-center">Thijs Oostdam</div>
                 <navigation-item v-for="item in items" :key="item" :title="item" :isActive="item == activeItem" @navigate="navigate"></navigation-item>
             </div>
         </div>
-        <div class="desk item-grow container" v-if="deviceType == 'desk'">
-            <div class="name item-grow container-center">Thijs Oostdam</div>
+        <div class="desk i-grow c" v-if="deviceType == 'desk'">
+            <div class="name i-grow c-center">Thijs Oostdam</div>
             <navigation-item v-for="item in items" :key="item" :title="item" :isActive="item == activeItem" @navigate="navigate"></navigation-item>
         </div>
     </div>`

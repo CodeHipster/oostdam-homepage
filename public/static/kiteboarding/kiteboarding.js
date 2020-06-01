@@ -39,7 +39,7 @@ export default {
         }
     },
     template: `
-    <div class=kiteboarding>        
+    <div class="kiteboarding i-grow c">        
         <div class=arrow>
             <img src='static/kiteboarding/arrow-left.svg' @click='previous()'>
         </div>

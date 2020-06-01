@@ -26,7 +26,7 @@ new Vue({
         }
     },
     template: `
-    <div class="root container-column">
+    <div class="root c-column">
         <navigation @navigate="navigate"></navigation>
         <kiteboarding v-show="activeItem == 'my kiteboarding'"></kiteboarding>
         <software v-show="activeItem == 'my software'"></software>

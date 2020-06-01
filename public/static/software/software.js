@@ -150,8 +150,8 @@ export default {
         }
     },
     template: `
-    <div class=software>
-        <div class=content>
+    <div class="software i-grow c-center" >
+        <div class="content i-grow c-stretch">
             <project-item 
             v-for="project in projects" 
             :key="project.title" 

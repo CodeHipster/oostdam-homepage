@@ -8,3 +8,5 @@ TODO:
 
 - review CSS classes
 - make resume mobile friendly
+- my kiteboarding
+    - make arrow transparent after clicking

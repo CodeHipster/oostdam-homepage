@@ -35,24 +35,24 @@ export default {
         }
     },
     template: `
-    <div class=project-item
+    <div class="project-item c"
         @click=click
         @mouseover=mouseOver
         @mouseleave=mouseLeave>        
-        <div class=content>
+        <div class="content i-grow c">
             <img :src="project.image" :alt="project.title" v-show="focus != project.title">
-            <div class=info v-show="focus == project.title">
-                <div class=header>
-                    <div class=list> 
+            <div class="info i-grow c-column" v-show="focus == project.title">
+                <div class="header i-grow c">
+                    <div class="list i-grow c-column"> 
                         <div class=title>{{project.title}}</div>
                         <div v-if="project.link">Showcase: <a class=link target="_blank" :href="project.link">{{project.title}}</a></div>
                         <div>source: <a class=github target="_blank" :href="project.sourceCode">Github</a> </div>
                         <div class=year>{{project.year}}</div>
                     </div>
-                    <img :src="project.image" :alt="project.title">
+                    <img class="i-grow" :src="project.image" :alt="project.title">
                 </div>
-                <div class=description>{{project.description}}</div>
-                <div class=tech><b>Technology used:</b> {{techConcat}}</div>
+                <div class="description i-grow">{{project.description}}</div>
+                <div class="tech"><b>Technology used:</b> {{techConcat}}</div>
             </div>
         </div>
     </div>`
