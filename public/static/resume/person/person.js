@@ -13,7 +13,7 @@ export default Vue.component('person', {
     template: `
     <div class="person c-column c-stretch">
         <div class="top i-grow c-column">
-            <div class="name i-center" v-if="deviceType != 'desk'">Thijs Oostdam</div>
+            <div class="name i-center" v-show="deviceType != 'desk'">Thijs Oostdam</div>
             <div class='profile-image i-center'>
                 <img src="static/resume/profile.png" alt="profile image">
             </div>

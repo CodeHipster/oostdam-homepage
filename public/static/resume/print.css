@@ -6,4 +6,21 @@ html{
     font-size: 12px !important;
 }
 
+.resume .person .name{
+    display: inline !important;
+}
 
+.resume .person {
+    flex: 1 1 180px !important;
+    min-width: 100px !important;
+}
+
+.job-item {
+    flex: 1 1 200px !important;
+    min-width: 150px !important;
+    padding: 12px !important;
+}
+
+.skill {
+    padding: 12px !important;
+}
