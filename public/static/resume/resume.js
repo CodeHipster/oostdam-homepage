@@ -12,8 +12,8 @@ export default {
         'experience': experience,
     },
     template: `
-    <div class=resume>
-        <div class=content>
+    <div class="resume i-grow c-stretch c-center">
+        <div class="content i-grow c-stretch">
             <person></person>
             <experience></experience>
         </div>

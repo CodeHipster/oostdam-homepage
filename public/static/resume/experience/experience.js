@@ -1,9 +1,13 @@
+import addCss from '../../add-css.js'
 import educationItem from './education-item/education-item.js'
 import jobItem from './job-item/job-item.js'
 import skillItem from './skill-item/skill-item.js'
 import data from './data.js'
 
 export default Vue.component('experience', {
+    beforeCreate: function () {
+        addCss('static/resume/experience/experience.css');
+    },
     components:{  
         'education-item': educationItem,
         'job-item': jobItem,

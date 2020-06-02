@@ -1,0 +1,53 @@
+/* ========= person ========= */
+
+.person {
+    flex: 1 1 288px;
+    padding: 0 16px 0 16px;
+    min-width: 250px;
+
+    border-right: 1px solid;
+    border-color: #434343;
+    background-size: cover;
+}
+
+/* ========= name ========= */
+.person .name {
+    padding: 4px 0 4px 0;
+    font-size: 200%;
+}
+
+/* ========= profile image ========= */
+.profile-image {
+    width: 80%;
+}
+
+.profile-image img {
+    border-radius: 50%;
+    width: 100%;
+    transform: scaleX(-1);
+}
+
+/* ========= contact ========= */
+.contact .icon-text {
+    padding: 4px 0 4px 0;
+}
+
+.contact .icon-text .icon {
+    flex: 0 0 32px;
+    padding-right: 8px;
+}
+
+.contact .icon-text .icon img {
+    width: 100%;
+}
+
+/* ========= hobbies ========= */
+
+.hobbies .icon {
+    flex: 0 0 64px;
+    padding: 8px;
+}
+
+.hobbies .icon img {
+    width: 100%;
+}

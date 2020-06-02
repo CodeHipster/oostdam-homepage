@@ -12,18 +12,16 @@ body {
     height: 100%;
 }
 
+
+/*===== FlexBox classes =====*/
+/*===== Container =====*/
 .c {
     display: flex;
 }
 
-/* row is default direction */
 .c-column {
     display: flex;
     flex-direction: column;
-}
-
-.i-grow {
-    flex: 1
 }
 
 .c-center {
@@ -31,7 +29,21 @@ body {
     justify-content: center;
 }
 
+.c-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .c-stretch {
     display: flex;
     align-items: stretch;
+}
+
+/*===== Item =====*/
+.i-grow {
+    flex: 1
+}
+
+.i-center {
+    align-self: center;
 }

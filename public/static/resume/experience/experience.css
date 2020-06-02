@@ -1,0 +1,138 @@
+
+/* ========= experience ========= */
+
+.experience {
+    /* spacer hack */
+    flex: 1000000 0 30rem;
+    max-width: 80rem;
+    border-left: 1px solid;
+    border-color: #434343;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: white;
+}
+
+/* ========= title ========= */
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+}
+
+.introduction .title {
+    font-size: 1.5rem;
+}
+
+/* ========= education ========= */
+
+.date {
+    width: 7rem;
+    font-weight: 700;
+}
+
+/* ========= flexing ========= */
+
+.row-wrap-start {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========= job-item ========= */
+
+.job-item {
+    padding: 1rem;
+    /* make space between items */
+    margin: 0 0.5rem 0.5rem 0;
+    flex: 1 1 18rem;
+    align-items: stretch;
+    max-width: 30rem;
+    min-width: 15rem;
+    background: #CCC48A;
+    display: flex;
+    justify-content: stretch;
+}
+
+.job-item .content {
+    flex: 1;
+    padding: 0.25rem;
+    justify-content: space-between;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.job-item .job-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+}
+
+.job-item .job-date {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+}
+
+.job-item .job-title {
+    flex: 2 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: #3d9a85;
+    font-weight: 700;
+}
+
+.job-item .references {
+    flex: 1;
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+/* ========= skill ========= */
+
+.skill {
+    flex: 1 1 8rem;
+    max-width: 12rem;
+    min-width: 5rem;
+    min-height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    /* make space between items */
+    margin: 0 0.5rem 0.5rem 0;
+    color: black;
+}
+
+.dark-yellow {
+    background: #CABA70;
+}
+
+.light-yellow {
+    background: #D0C878;
+}
+
+.dark-blue {
+    background: #a0a65a;
+}
+
+.light-blue {
+    background: #a0a65a;
+}
