@@ -1,0 +1,30 @@
+/* ========= job-item ========= */
+
+.job-item {
+    flex: 1 1 300px;
+    max-width: 650px;
+    min-width: 250px;
+    background: #CCC48A;
+    padding: 16px;
+    /* make space between items */
+    margin: 0 8px 8px 0;
+}
+
+.job-item .content {
+    flex: 1;
+    padding: 4px;
+    background: white;
+}
+
+.job-item .job-header {
+    padding-bottom: 8px;
+}
+
+.job-item .job-date {
+    white-space: nowrap;
+    padding-right: 16px;
+}
+
+.job-item .job-title {
+    color: #3d9a85;
+}

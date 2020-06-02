@@ -1,0 +1,18 @@
+
+/* ========= education ========= */
+
+.education-item {
+    flex-wrap: wrap;
+}
+
+.education-item .date {
+    flex: 0 0 100px;
+}
+
+.education-item .description {
+    flex: 1 1 300px;
+}
+
+
+
+

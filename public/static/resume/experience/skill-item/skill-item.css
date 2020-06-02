@@ -1,0 +1,25 @@
+/* ========= skill ========= */
+
+.skill {
+    /* make space between items */
+    margin: 0 8px 8px 0;
+    padding: 16px;
+    color: black;
+    white-space: nowrap;
+}
+
+.dark-yellow {
+    background: #CABA70;
+}
+
+.light-yellow {
+    background: #D0C878;
+}
+
+.dark-blue {
+    background: #a0a65a;
+}
+
+.light-blue {
+    background: #a0a65a;
+}

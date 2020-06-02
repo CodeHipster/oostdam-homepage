@@ -24,13 +24,13 @@ export default {
     studies: [{
         date: '2010-2012',
         names: [
-            'IGAD(International Game Architecture and Design)'
+            'IGAD\n(International Game Architecture and Design)'
         ]
     },
     {
         date: '2004-2010',
         names: [
-            'Constructional Engineering'
+            'Constructional Engineering\n(The Hague University of Applied Sciences)'
         ]
     }],
     jobs: [

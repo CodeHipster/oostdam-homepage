@@ -39,6 +39,16 @@ body {
     align-items: stretch;
 }
 
+.c-space-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /*===== Item =====*/
 .i-grow {
     flex: 1

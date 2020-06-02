@@ -26,12 +26,9 @@ export default Vue.component('experience', {
     },
     data: function(){return data;},
     template: `
-    <div class="experience">
-        <div class=introduction>
-            <div class=title>Full Stack Developer</div>
-        </div>
+    <div class="experience c-column">
+        <div class=title>Full Stack Developer</div>
         <hr>
-
         <div>
             <h2>Education</h2>
             <div>
@@ -48,7 +45,7 @@ export default Vue.component('experience', {
         <hr>
         <div>
             <h2>Work experience</h2>
-            <div class=row-wrap-start>
+            <div class="c-wrap">
                 <job-item v-for="job in jobs" :key="job.company + job.role" :job="job">
                 </job-item>
             </div>
@@ -56,7 +53,7 @@ export default Vue.component('experience', {
         <hr>
         <div>
             <h2>Skills</h2>
-            <div class=row-wrap-start>
+            <div class="c-wrap">
                 <skill-item v-for="(skill, index) in sortedHardSkills" :key="skill.name" :skill="skill"
                     v-bind:class="{ 'dark-yellow': index % 2 == 1, 'light-yellow': index % 2 == 0}">
                 </skill-item>
