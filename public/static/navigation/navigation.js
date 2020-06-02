@@ -8,7 +8,6 @@ export default {
     },
     created: function () {
         this.$emit('navigate', this.activeItem);
-        console.log(screen.availWidth + " " + deviceType)
     },
     data: function () {
         return {
