@@ -2,12 +2,9 @@ import LoopList from '../loop-list.js'
 
 export default class {
 
-    loopList;
-    applyImage;
-    timer;
-    interval = 8000;
-
     constructor(applyImage) {
+        this.loopList = undefined;
+        this.interval = 8000;
         this.applyImage = applyImage;
         this.timer = setTimeout(function () { this.next(); }.bind(this), this.interval);
     }

@@ -1,8 +1,4 @@
 export default class {
-
-    index;
-    items;
-
     constructor(items) {
         if (!Array.isArray(items) || items.length < 2) {
             throw new Error("LoopList needs atleast 2 items to rotate over.");
