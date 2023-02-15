@@ -91,7 +91,6 @@ export default Vue.component('voronoi', {
     fitToParent() {
       // Make it visually fill the positioned parent
       const parent = this.$parent.$el
-      console.log(`parent width: ${this.$parent.$el.offsetWidth}, height: ${this.$parent.$el.offsetHeight}`)
       this.width = parent.offsetWidth
       this.height = parent.offsetHeight
 
