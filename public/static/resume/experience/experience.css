@@ -6,7 +6,7 @@
     flex: 1000000;
     border-color: #434343;
     padding: 16px;
-    background: white;
+    background: rgba(255, 255, 255, 0.85);
 }
 
 /* ========= title ========= */

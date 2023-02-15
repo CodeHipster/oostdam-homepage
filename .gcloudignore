@@ -26,3 +26,6 @@
 
 # ignore what git ignores as well.
 #!include:.gitignore
+
+# ignore server for running locally
+server-amd64-macos-darwin

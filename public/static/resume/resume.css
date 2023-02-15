@@ -2,8 +2,6 @@
     /* min-height: 100%; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #434343;
-    background: url('getwallpapers-polygon.jpg');
-    background-size: cover;
     border-top: 1px solid;
 }
 
@@ -11,6 +9,10 @@
     /* flex-wrap: wrap-reverse; */
     flex-wrap: wrap;
     max-width: 1280px;
+}
+
+canvas {
+  
 }
 
 

@@ -11,7 +11,12 @@ new Vue({
     },
     data: function(){
         return {
-            activeItem: ""            
+            activeItem: "",
+            show: {
+              kiteboarding: false,
+              software: false,
+              resume: false,
+            }          
         }
     },
     components:{
@@ -25,11 +30,22 @@ new Vue({
             this.activeItem = target
         }
     },
+    computed: {
+      showKiteboarding(){
+        return this.activeItem == 'my kiteboarding'
+      },
+      showSoftware(){
+        return this.activeItem == 'my software'
+      },
+      showResume(){
+        return this.activeItem == 'my resume'
+      }
+    },
     template: `
     <div class="root c-column">
         <navigation @navigate="navigate"></navigation>
-        <kiteboarding v-show="activeItem == 'my kiteboarding'"></kiteboarding>
-        <software v-show="activeItem == 'my software'"></software>
-        <resume v-show="activeItem == 'my resume'"></resume>
+        <kiteboarding v-show="showKiteboarding"></kiteboarding>
+        <software v-show="showSoftware"></software>
+        <resume v-show="showResume"></resume>
     </div>`
 })
