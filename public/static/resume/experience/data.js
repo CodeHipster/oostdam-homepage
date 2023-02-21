@@ -45,7 +45,7 @@ export default {
       period: { from: 'June. 2020', to: 'current' },
       company: 'NN',
       role: 'DevOps Engineer',
-      responsibilities: 'Senior engineer of the team responsible for development and operations of the internet savings products and various other applications. But also educating fellow colleagues through workshops and knowledge sharing sessions.',
+      responsibilities: 'Senior engineer of the team responsible for the development and operations of internet-savings products and various other applications. But also educating colleagues through workshops and knowledge-sharing sessions.',
     },
     {
       period: { from: 'Jan. 2020', to: 'Mar. 2020' },
