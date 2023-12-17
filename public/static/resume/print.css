@@ -1,3 +1,11 @@
+body {
+  zoom: 90%;
+}
+
+@page {
+  size: A4;
+}
+
 .resume{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #434343;
