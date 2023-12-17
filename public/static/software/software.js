@@ -61,7 +61,8 @@ export default {
                         'Flutter',
                         'WebP',
                     ],
-                    description: "A fantasy-themed clock made in Flutter(from Google) with the Dart language. Artwork made by Kaj Fischer."
+                    description: "A fantasy-themed clock made in Flutter(from Google) with the Dart language. Flutter makes it possible to deploy the same application on IOS/Android/Web. Artwork made by Kaj Fischer. Follow the showcase link to see the clock on the web. Light/dark theme and 24h notation can be changed in the settings on the top right.",
+                    link: 'static/software/flutter-clock/index.html',
                 },
                 {
                     title: "Style transfer",
