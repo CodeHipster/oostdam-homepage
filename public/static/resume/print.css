@@ -1,3 +1,13 @@
+.resume{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #434343;
+  border-top: 1px solid;
+}
+
+canvas {
+  display:none;
+}
+
 .navigation {
     display: none;
 }

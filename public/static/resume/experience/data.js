@@ -45,7 +45,7 @@ export default {
       period: { from: 'June. 2020', to: 'current' },
       company: 'NN',
       role: 'DevOps Engineer',
-      responsibilities: 'Senior engineer of the team responsible for the development and operations of internet-savings products and various other applications. But also educating colleagues through workshops and knowledge-sharing sessions.',
+      responsibilities: 'Senior engineer in an \'enabling\' team. Responsible for filling in the knowledge gap in the domain. By teaching/helping other teams with their software architecture, application design, development etc.',
     },
     {
       period: { from: 'Jan. 2020', to: 'Mar. 2020' },
