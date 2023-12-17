@@ -15,7 +15,7 @@ export default Vue.component('person', {
         <div class="top i-grow c-column">
             <div class="name i-center" v-show="deviceType != 'desk'">Thijs Oostdam</div>
             <div class='profile-image i-center'>
-                <img src="static/resume/profile.png" alt="profile image">
+                <img src="static/resume/profile.jpg" alt="profile image">
             </div>
             <div class="contact c-column">
                 <h2>Contact</h2>
