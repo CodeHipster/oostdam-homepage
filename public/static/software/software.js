@@ -12,6 +12,18 @@ export default {
     return {
       projects: [
         {
+          title: "Drops V3",
+          year: '2025',
+          image: 'static/software/media/drops_v3.webp',
+          sourceCode: 'https://github.com/CodeHipster/wasm_webgpu/tree/main/webgpu/physics',
+          tech: [
+            'JavaScript',
+            'WebGPU'
+          ],
+          description: "Playing around with WebGPU. Physics simulation running on the GPU in the browser 🤩",
+          link: 'static/software/drops3/index.html',
+        },
+        {
           title: "Touch ball",
           year: '2024',
           image: 'static/software/media/touch-ball.png',
