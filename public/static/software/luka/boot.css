@@ -1,0 +1,65 @@
+
+/* Font face for oldschool BIOS look */
+@font-face {
+	font-family: 'oldschool';
+	src: url('Web437_EpsonMGA-2y.woff') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Reset and layout */
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #000;
+	color: #00FF00;
+	font-family: 'oldschool', 'Courier New', Courier, monospace;
+	font-size: 1.2rem;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: left;
+}
+
+@media (max-width: 460px) {
+	#boot {
+		font-size: 0.8rem;
+	}
+	body {
+		font-size: 0.8rem;
+	}
+}
+/* Boot text area */
+#boot {
+	width: 44ch;
+	margin-left: 2ch;
+	height: 90vh;
+	background: transparent;
+	white-space: pre;
+	overflow: hidden;
+	box-sizing: border-box;
+	font-family: 'oldschool', 'Courier New', Courier, monospace;
+	transition: color 2s;
+	position: relative;
+	z-index: 1;
+}
+
+/* Background image with focal point for mobile */
+#luka-img {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	object-fit: cover;
+	object-position: 30% 65%; /* Focal point for mobile */
+	z-index: 0;
+	opacity: 0;
+	transition: opacity 5s;
+}
