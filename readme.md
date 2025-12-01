@@ -13,9 +13,8 @@ How to deploy
 - Have the gcloud commandline tools installed. https://cloud.google.com/sdk/docs/install-sdk
 - init glcoud ```gcloud init```
 - for windows enable script execution in powershell: ```Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned```
-- run ```gcloud app deploy ./app.yaml```
-
-gcloud app deploy thijs-service/app.yaml luka-service/app.yaml dispatch.yaml
+- run ```gcloud app deploy thijs-service/app.yaml luka-service/app.yaml dispatch```
+* or only the service/routing that you have changed
 
 Fix the build
 --------------
