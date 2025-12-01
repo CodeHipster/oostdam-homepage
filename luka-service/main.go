@@ -12,10 +12,10 @@ func main() {
 	// By configuring a static handler in app.yaml, App Engine serves all the
 	// static content itself. As a result, the following three lines are in
 	// effect for development only.
+	// on prod the static handler will handle before it reaches the service.
 	public := http.FileServer(http.Dir("public"))
 	http.Handle("/static/", public)
 	http.HandleFunc("/", rootHandler)
-	http.HandleFunc("/", lukaHandler)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -31,23 +31,9 @@ func main() {
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 	// Only handle root path and non-luka subdomain
-	if r.URL.Path != "/" || lukaSubdomain(r) {
+	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return
 	}
 	http.ServeFile(w, r, "public/oostdam.html")
-}
-
-// redirects luka subdomain requests to /static/software/luka/index.html
-func lukaHandler(w http.ResponseWriter, r *http.Request) {
-	if lukaSubdomain(r) {
-		http.ServeFile(w, r, "public/static/software/luka/index.html")
-		return
-	}
-}
-
-// checks if the request is from the luka subdomain
-func lukaSubdomain(r *http.Request) bool {
-	host := r.Host
-	return len(host) >= 5 && host[:5] == "luka."
 }

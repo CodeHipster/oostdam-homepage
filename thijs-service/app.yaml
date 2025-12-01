@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+service: thijs
 runtime: go123
 
 handlers:
@@ -23,11 +24,6 @@ handlers:
   redirect_http_response_code: 301
   static_files: public/oostdam.html
   upload: public/oostdam\.html
-
-- url: /.*
-  secure: always
-  redirect_http_response_code: 301
-  script: auto
 
 automatic_scaling:
   max_instances: 2

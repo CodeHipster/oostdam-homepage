@@ -1,0 +1,8 @@
+dispatch:
+  # 1. Send subdomain traffic to the specific service
+  - url: "luka.oostd.am/*"
+    service: luka
+
+  # 2. Send everything else to the default Go app
+  - url: "*/*"
+    service: default

@@ -15,8 +15,12 @@ How to deploy
 - for windows enable script execution in powershell: ```Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned```
 - run ```gcloud app deploy ./app.yaml```
 
+gcloud app deploy thijs-service/app.yaml luka-service/app.yaml dispatch.yaml
+
 Fix the build
 --------------
 If you break the build by deleting buckets for example
 Try ```gcloud beta app repair```
 And ```gcloud app deploy ./app.yaml --no-cache```
+
+
