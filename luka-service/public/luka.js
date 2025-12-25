@@ -2,7 +2,7 @@ const bootText = `
 Initializing project    
 Codename:    
     
-    Luka Oostdam Mabasa
+    Luka Mabasa
     
 Release date:             27-11-2025 11:36
 Weight:                   2460g
