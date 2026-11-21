@@ -13,7 +13,7 @@ How to deploy
 - Have the gcloud commandline tools installed. https://cloud.google.com/sdk/docs/install-sdk
 - init glcoud ```gcloud init```
 - for windows enable script execution in powershell: ```Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned```
-- run ```gcloud app deploy thijs-service/app.yaml luka-service/app.yaml dispatch.yaml```
+- run ```gcloud app deploy thijs-service/app.yaml luka-service/app.yaml dispatch.yaml --promote```
 * or only the service/routing that you have changed
 
 Fix the build
@@ -21,5 +21,3 @@ Fix the build
 If you break the build by deleting buckets for example
 Try ```gcloud beta app repair```
 And ```gcloud app deploy ./app.yaml --no-cache```
-
-
