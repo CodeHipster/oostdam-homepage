@@ -13,7 +13,7 @@
 # limitations under the License.
 
 service: thijs
-runtime: go123
+runtime: go127
 
 handlers:
 - url: /static

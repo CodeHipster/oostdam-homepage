@@ -36,9 +36,17 @@ html{
 .job-item {
     flex: 1 1 200px !important;
     min-width: 150px !important;
-    padding: 12px !important;
+    padding: 4px !important;
 }
 
 .skill {
-    padding: 12px !important;
+    flex: 0 0 auto !important;   /* don't stretch to fill the row */
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 4px 10px !important;
+    font-size: 11px;
+    border-radius: 4px;
+    /* keep the yellow/blue backgrounds in print */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
 }

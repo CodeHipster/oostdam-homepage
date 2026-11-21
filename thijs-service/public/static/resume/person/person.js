@@ -23,14 +23,14 @@ export default Vue.component('person', {
                     <div class=icon>
                         <img src="static/resume/icon-home.png">
                     </div>
-                    <div class="text i-center">The Hague</div>
+                    <div class="text i-center">Wassenaar</div>
                 </div>
                 <div class="icon-text i-grow c">
                     <div class=icon>
                         <img src="static/resume/icon-email.png">
                     </div>
                     <div class="text i-center">
-                    oostdam@gmail.com</div>
+                    thijs@oostd.am</div>
                 </div>
                 <div class="icon-text i-grow c">
                     <div class=icon>
